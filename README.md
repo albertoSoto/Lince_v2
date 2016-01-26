@@ -2,8 +2,11 @@
 Lince:multiplatform sport analysis software. 
 
 Internal structure:
-- Based on ssring boot
-- Includes chromium browser
+- Based on spring
+- Uses javafx
+- Includes chromium browser via jxbrowser
+- Includes MVC pattern via spring mvc
+- Includes opensource plugins for video editing
 - JDK 1.8
 
 Based on chromium platform served by Jxbrowser
