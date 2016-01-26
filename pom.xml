@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.7.RELEASE</version>
+        <version>1.3.2.RELEASE</version>
         <relativePath/>
     </parent>
     <properties>
@@ -31,9 +31,22 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.0</version>
+        </dependency>
+        <!--dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
+        </dependency-->
         <dependency>
             <groupId>com.teamdev.jxbrowser</groupId>
             <artifactId>jxbrowser</artifactId>
@@ -107,6 +120,6 @@
                 </includes>
             </resource>
         </resources>
-        <finalName>spring-boot-javafx-demo</finalName>
+        <finalName>lince-desktop</finalName>
     </build>
 </project>

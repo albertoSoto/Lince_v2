@@ -16,22 +16,42 @@
 package com.deicos.lince;
 
 import com.deicos.lince.components.MainLayout;
+import com.deicos.lince.config.AbstractJavaFxApplicationSupport;
+import com.deicos.lince.config.AppConfig;
+import com.deicos.lince.config.MvcConfig;
+import com.deicos.lince.config.ServletContainerCustomizer;
 import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.BrowserType;
 import com.teamdev.jxbrowser.chromium.javafx.BrowserView;
 import javafx.application.Preloader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import java.net.URL;
 
 /**
- * @author Thomas Darimont
+ * asoto
  */
 @Lazy
 @SpringBootApplication
+@Configuration
+@EnableAutoConfiguration
 public class App extends AbstractJavaFxApplicationSupport {
 
     /**
@@ -40,8 +60,43 @@ public class App extends AbstractJavaFxApplicationSupport {
     @Value("${app.ui.title:Example App}")//
     private String windowTitle;
 
+    @Autowired
+    private ApplicationContext context;
+
+
+    private int port = 0;
+
     @Autowired//
     private MainLayout mainLayout;
+
+    public static void main(String[] args) {
+        SpringApplication.run(new Object[]{MvcConfig.class/*, ServletContainerCustomizer.class*/}, args);
+        launchApp(App.class, args);
+    }
+
+
+    private String getServerURL() {
+        String baseUri = "http://localhost";
+        try {
+            if (port == 0) {
+                port = ((AnnotationConfigEmbeddedWebApplicationContext) context).getEmbeddedServletContainer().getPort();
+            }
+            return new URL( baseUri + ":" + port ).toString();
+        } catch (Exception e) {
+            System.out.println("ERR LOCALHOST:" + e.toString());
+        }
+        return baseUri+ "/";
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/*").allowedOrigins(getServerURL());
+            }
+        };
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -49,19 +104,24 @@ public class App extends AbstractJavaFxApplicationSupport {
         stage.setTitle(windowTitle);
         //stage.setScene(new Scene(mainLayout));
 
-        Browser browser = new Browser();
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        Browser browser = new Browser(BrowserType.HEAVYWEIGHT);
         BrowserView view = new BrowserView(browser);
-        Scene scene = new Scene(new BorderPane(view), 700, 500);
+        //String url = getClass().getClassLoader().getResource("app-lince.html").toString();
+        String url = getServerURL();
+        browser.loadURL(url);
+        String remoteDebuggingURL = browser.getRemoteDebuggingURL();
+        System.out.println("==========================");
+        System.out.println("Remote debug:" + remoteDebuggingURL);
+        System.out.println("Remote uri: " + url);
+        System.out.println("==========================");
+        Scene scene = new Scene(new BorderPane(view), screenBounds.getWidth() - 20, screenBounds.getHeight() - 40);
         stage.setScene(scene);
-        browser.loadURL("http://www.google.com");
-
         stage.setResizable(true);
         stage.centerOnScreen();
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launchApp(App.class, args);
-    }
+
 
 }
