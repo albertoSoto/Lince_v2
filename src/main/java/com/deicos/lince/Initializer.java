@@ -17,9 +17,7 @@ package com.deicos.lince;
 
 import com.deicos.lince.components.MainLayout;
 import com.deicos.lince.config.AbstractJavaFxApplicationSupport;
-import com.deicos.lince.config.AppConfig;
 import com.deicos.lince.config.MvcConfig;
-import com.deicos.lince.config.ServletContainerCustomizer;
 import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.BrowserType;
 import com.teamdev.jxbrowser.chromium.javafx.BrowserView;
@@ -52,7 +50,7 @@ import java.net.URL;
 @SpringBootApplication
 @Configuration
 @EnableAutoConfiguration
-public class App extends AbstractJavaFxApplicationSupport {
+public class Initializer extends AbstractJavaFxApplicationSupport {
 
     /**
      * Note that this is configured in application.properties
@@ -71,7 +69,7 @@ public class App extends AbstractJavaFxApplicationSupport {
 
     public static void main(String[] args) {
         SpringApplication.run(new Object[]{MvcConfig.class/*, ServletContainerCustomizer.class*/}, args);
-        launchApp(App.class, args);
+        launchApp(Initializer.class, args);
     }
 
 

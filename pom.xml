@@ -15,7 +15,7 @@
     </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>com.deicos.lince.App</start-class>
+        <start-class>com.deicos.lince.Initializer</start-class>
         <java.version>1.8</java.version>
     </properties>
     <repositories>

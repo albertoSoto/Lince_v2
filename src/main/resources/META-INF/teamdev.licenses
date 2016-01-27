@@ -1,12 +1,14 @@
 Product: JxBrowser
 Version: 6.x
 Licensed to: 
-License type: Evaluation
-License info: Single-user license
-Expiration date: 25-02-2016
-Support expiration date: 25-02-2016
-Generation date: 26-01-2016
-Platforms: mac/x64;win32/x86;mac/ppc;win32/x64;linux/x86;mac/x86;linux/x64
-Company name: NO COMPANY
-SigB: ybvpurk2iitkn04r6umhdakqmc8k4tasyz6olymab2e01flbfjz5ofirorghvy9yjwpj2n1kr2uldbf2
-SigA: 117g6ibkpazwisaotnxup750j3nbe88gdpt9z0sphcmqyvxwg2o7dwwhorq7i3s94fahu1da1jf2v68sl
+License type: Development
+License info: Open Source Project
+Product binding: Free Licence for Lince Open-Source Project
+Product binding info: 16hmsr5xrhp8e65w16mc7utq30r55pjoggm0ilqdrqsy
+Expiration date: NEVER
+Support expiration date: NO SUPPORT
+Generation date: 27-01-2016
+Platforms: mac/x64;win32/x86;win32/x64;linux/x64;mac/ppc;mac/x86;linux/x86
+Company name: Lince
+SigB: iprlcvbg7gwtoet7n5vafr1pv7lwpwg53q1trwz2749llmumobyfza6u5wf4wj40m8edey4xdoponqsb
+SigA: yy1tu60jiw3nn1rg1e32yn24478ycs958ts26ywandgxqgik96q4whpo5ag262rexluofrsfamt9xwto
