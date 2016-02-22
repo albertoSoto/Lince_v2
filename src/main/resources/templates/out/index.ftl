@@ -1,4 +1,3 @@
-<#macro layout>
 <!DOCTYPE html>
 <!--[if IE 8]>
 <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -43,8 +42,9 @@
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="/">
+            <a href="index.html">
                 <img src="/global/brand/logoHeader-mid.png" alt="logo" class="logo-default" style=""/> </a>
+
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
             </div>
@@ -65,11 +65,15 @@
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a href="/one">
+                        <a href="javascript:;">
                             <i class="icon-docs"></i> Nuevo registro </a>
                     </li>
                     <li>
-                        <a href="/two">
+                        <a href="javascript:;">
+                            <i class="icon-tag"></i> New Comment </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
                             <i class="icon-share"></i> Cargar comportamientos </a>
                     </li>
                 </ul>
@@ -102,30 +106,9 @@
             <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false"
                 data-auto-scroll="true" data-slide-speed="200">
                 <li class="nav-item start active open ">
-                    <a href="/" class="nav-link nav-toggle">
+                    <a href="#" class="nav-link nav-toggle">
                         <i class="icon-home"></i>
                         <span class="title">Inicio</span>
-                        <span class="arrow"></span>
-                    </a>
-                </li>
-                <li class="nav-item start active open ">
-                    <a href="/categoryConfig" class="nav-link nav-toggle">
-                        <i class="icon-home"></i>
-                        <span class="title">Configurar</span>
-                        <span class="arrow"></span>
-                    </a>
-                </li>
-                <li class="nav-item start active open ">
-                    <a href="/videoPlayer" class="nav-link nav-toggle">
-                        <i class="icon-home"></i>
-                        <span class="title">Evaluar</span>
-                        <span class="arrow"></span>
-                    </a>
-                </li>
-                <li class="nav-item start active open ">
-                    <a href="/" class="nav-link nav-toggle">
-                        <i class="icon-home"></i>
-                        <span class="title">Exportar</span>
                         <span class="arrow"></span>
                     </a>
                 </li>
@@ -139,7 +122,30 @@
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
-            <#nested>
+            <!-- BEGIN PAGE HEADER-->
+            <h3 class="page-title"> Lince
+                <small>Multi-platform sport analysis software</small>
+            </h3>
+            <div class="page-bar">
+                <ul class="page-breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="#">Inicio</a>
+                        <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <span>Selección de video</span>
+                    </li>
+                </ul>
+                <div class="page-toolbar">
+                    <div class="btn-group pull-right">
+                    </div>
+                </div>
+            </div>
+            <!-- END PAGE HEADER-->
+            <div class="note note-info">
+                <p> Hello INDEX FILE ${name}</p>
+            </div>
         </div>
         <!-- END CONTENT BODY -->
     </div>
@@ -188,5 +194,5 @@
 <script src="/global/layout/scripts/quick-sidebar.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
 </body>
+
 </html>
-</#macro>

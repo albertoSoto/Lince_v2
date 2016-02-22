@@ -20,8 +20,17 @@ public class PagesController {
         return "one";
     }
 
-    @RequestMapping("/two")
-    public String two() {
-        return "two";
+    @RequestMapping("/videoPlayer")
+    public String videoPlayer(@RequestParam(value = "videoUrl", required = false, defaultValue = "public/media/mov.mp4") String videoUrl
+            , Model model) {
+        model.addAttribute("videoUrl", videoUrl);
+        return "video";
     }
+
+    @RequestMapping("/categoryConfig")
+    public String categories(Model model) {
+        //model.addAttribute("videoUrl", videoUrl);
+        return "categories";
+    }
+
 }

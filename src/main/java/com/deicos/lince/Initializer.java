@@ -55,7 +55,7 @@ public class Initializer extends AbstractJavaFxApplicationSupport {
     /**
      * Note that this is configured in application.properties
      */
-    @Value("${app.ui.title:Example App}")//
+    @Value("${app.ui.title:Lince App}")//
     private String windowTitle;
 
     @Autowired
@@ -68,8 +68,9 @@ public class Initializer extends AbstractJavaFxApplicationSupport {
     private MainLayout mainLayout;
 
     public static void main(String[] args) {
-        SpringApplication.run(new Object[]{MvcConfig.class/*, ServletContainerCustomizer.class*/}, args);
+        //javafx must be the first to be initialized, or will fail on playing startup
         launchApp(Initializer.class, args);
+        SpringApplication.run(new Object[]{MvcConfig.class/*, ServletContainerCustomizer.class*/}, args);
     }
 
 
@@ -98,6 +99,8 @@ public class Initializer extends AbstractJavaFxApplicationSupport {
 
     @Override
     public void start(Stage stage) throws Exception {
+        /*AppPreloader preloader = new AppPreloader();
+        preloader.start(stage);*/
         notifyPreloader(new Preloader.StateChangeNotification(Preloader.StateChangeNotification.Type.BEFORE_START));
         stage.setTitle(windowTitle);
         //stage.setScene(new Scene(mainLayout));

@@ -15,6 +15,7 @@
  */
 package com.deicos.lince.config;
 
+import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 
 import org.springframework.boot.SpringApplication;
@@ -43,8 +44,8 @@ public abstract class AbstractJavaFxApplicationSupport extends Application {
     }
 
     protected static void launchApp(Class<? extends AbstractJavaFxApplicationSupport> appClass, String[] args) {
-
         AbstractJavaFxApplicationSupport.savedArgs = args;
-        Application.launch(appClass, args);
+        //Application.launch(appClass, args);
+        LauncherImpl.launchApplication(appClass, AppPreloader.class, args);
     }
 }
