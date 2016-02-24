@@ -110,22 +110,29 @@
                 </li>
                 <li class="nav-item start active open ">
                     <a href="/categoryConfig" class="nav-link nav-toggle">
-                        <i class="icon-home"></i>
+                        <i class="icon-docs"></i>
                         <span class="title">Configurar</span>
                         <span class="arrow"></span>
                     </a>
                 </li>
                 <li class="nav-item start active open ">
                     <a href="/videoPlayer" class="nav-link nav-toggle">
-                        <i class="icon-home"></i>
-                        <span class="title">Evaluar</span>
+                        <i class="icon-social-dribbble"></i>
+                        <span class="title">Analizar</span>
                         <span class="arrow"></span>
                     </a>
                 </li>
                 <li class="nav-item start active open ">
-                    <a href="/" class="nav-link nav-toggle">
-                        <i class="icon-home"></i>
+                    <a href="/export" class="nav-link nav-toggle">
+                        <i class="icon-settings"></i>
                         <span class="title">Exportar</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                <li class="nav-item start active open ">
+                    <a href="/results" class="nav-link nav-toggle">
+                        <i class="icon-bar-chart"></i>
+                        <span class="title">Resultados</span>
                         <span class="arrow"></span>
                     </a>
                 </li>

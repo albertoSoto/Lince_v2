@@ -41,6 +41,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.io.IOException;
+import java.net.ServerSocket;
 import java.net.URL;
 
 /**
@@ -80,11 +82,29 @@ public class Initializer extends AbstractJavaFxApplicationSupport {
             if (port == 0) {
                 port = ((AnnotationConfigEmbeddedWebApplicationContext) context).getEmbeddedServletContainer().getPort();
             }
-            return new URL( baseUri + ":" + port ).toString();
+            return new URL(baseUri + ":" + port).toString();
         } catch (Exception e) {
             System.out.println("ERR LOCALHOST:" + e.toString());
         }
-        return baseUri+ "/";
+        return baseUri + "/";
+    }
+
+    private boolean isPortFree(int port) {
+        boolean isPortTaken = false;
+        ServerSocket socket = null;
+        try {
+            socket = new ServerSocket(port);
+        } catch (IOException e) {
+            isPortTaken = true;
+        } finally {
+            if (socket != null)
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                /* e.printStackTrace(); */
+                }
+        }
+        return isPortTaken;
     }
 
     @Bean
@@ -122,7 +142,6 @@ public class Initializer extends AbstractJavaFxApplicationSupport {
         stage.centerOnScreen();
         stage.show();
     }
-
 
 
 }
