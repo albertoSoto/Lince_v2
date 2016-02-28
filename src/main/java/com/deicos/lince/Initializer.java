@@ -22,11 +22,15 @@ import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.BrowserType;
 import com.teamdev.jxbrowser.chromium.javafx.BrowserView;
 import javafx.application.Preloader;
+import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -34,6 +38,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -52,7 +57,8 @@ import java.net.URL;
 @SpringBootApplication
 @Configuration
 @EnableAutoConfiguration
-public class Initializer extends AbstractJavaFxApplicationSupport {
+public class Initializer extends AbstractJavaFxApplicationSupport implements EventHandler<WindowEvent> {
+    private static final Logger logger = LoggerFactory.getLogger(Initializer.class);
 
     /**
      * Note that this is configured in application.properties
@@ -62,6 +68,8 @@ public class Initializer extends AbstractJavaFxApplicationSupport {
 
     @Autowired
     private ApplicationContext context;
+
+
 
 
     private int port = 0;
@@ -132,16 +140,25 @@ public class Initializer extends AbstractJavaFxApplicationSupport {
         String url = getServerURL();
         browser.loadURL(url);
         String remoteDebuggingURL = browser.getRemoteDebuggingURL();
-        System.out.println("==========================");
-        System.out.println("Remote debug:" + remoteDebuggingURL);
-        System.out.println("Remote uri: " + url);
-        System.out.println("==========================");
+        logger.info("==============================================================================");
+        logger.info("   Remote debug   :" + remoteDebuggingURL);
+        logger.info("   Remote uri     :" + url);
+        logger.info("==============================================================================");
         Scene scene = new Scene(new BorderPane(view), screenBounds.getWidth() - 20, screenBounds.getHeight() - 40);
         stage.setScene(scene);
         stage.setResizable(true);
         stage.centerOnScreen();
         stage.show();
+        stage.setOnCloseRequest(this);
     }
 
 
+    @Override
+    public void handle(WindowEvent event) {
+        //SpringApplication.exit(context);
+        logger.info("==============================================================================");
+        logger.info("   Finalizando servicios");
+        logger.info("==============================================================================");
+
+    }
 }

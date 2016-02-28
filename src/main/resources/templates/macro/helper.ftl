@@ -22,12 +22,21 @@
     </div>
 </div>
 </#macro>
-<#macro portlet captionTitle="Lince" captionAction="" captionButtons="">
+
+<#macro icoButton title="Notification" icon="" href="javascript:;" badge="" onclick="" additionalClass="">
+<a href="${href!"#"}" class="icon-btn ${additionalClass!""}">
+    <#if icon?has_content><i class="fa ${icon!"fa-bullhorn"}"></i></#if>
+    <div>${title!""}</div>
+    <#if badge?has_content><span class="badge badge-danger"> ${badge!"0"} </span></#if>
+</a>
+</#macro>
+
+<#macro portlet captionTitle="Lince" captionAction="" captionButtons="" icon="icon-globe">
 <!-- BEGIN PORTLET-->
 <div class="portlet light">
     <div class="portlet-title tabbable-line">
         <div class="caption">
-            <i class="icon-globe font-green-sharp"></i>
+            <i class="${icon!"icon-globe"} font-green-sharp"></i>
             <span class="caption-subject font-green-sharp bold uppercase">${captionTitle!}</span>
         </div>
         <div class="tools">
@@ -90,6 +99,54 @@
         </div>
         <p class="ribbon-content">Duis mollis, est non commodo luctus, nisi erat porttitor
             ligula</p>
+    </div>
+</div>
+</#macro>
+
+<#macro mtElementList>
+<div class="mt-element-list">
+    <div class="mt-list-head list-simple ext-1 font-white bg-green-sharp">
+        <div class="list-head-title-container">
+            <!--div class="list-date">Nov 8, 2015</div-->
+            <h3 class="list-title">Simple List</h3>
+        </div>
+    </div>
+    <div class="mt-list-container list-simple ext-1">
+        <ul>
+            <li class="mt-list-item done">
+                <!--div class="list-icon-container">
+                    <i class="icon-check"></i>
+                </div-->
+                <!--div class="list-datetime"> 8 Nov </div-->
+                <div class="list-item-content">
+                    <h3 class="uppercase">
+                        <a href="javascript:;">Concept Proof</a>
+                    </h3>
+                </div>
+            </li>
+            <li class="mt-list-item">
+                <!--div class="list-icon-container">
+                    <i class="icon-close"></i>
+                </div-->
+                <!--div class="list-datetime"> 8 Nov </div-->
+                <div class="list-item-content">
+                    <h3 class="uppercase">
+                        <a href="javascript:;">Listings Feature</a>
+                    </h3>
+                </div>
+            </li>
+            <li class="mt-list-item">
+                <!--div class="list-icon-container">
+                    <i class="icon-close"></i>
+                </div-->
+                <!--div class="list-datetime"> 8 Nov </div-->
+                <div class="list-item-content">
+                    <h3 class="uppercase">
+                        <a href="javascript:;">Listings Feature</a>
+                    </h3>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
 </#macro>

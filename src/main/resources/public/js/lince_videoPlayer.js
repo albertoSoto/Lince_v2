@@ -622,7 +622,7 @@
          * @param optionsArray
          * @returns {*}
          */
-        $.fn.lince_VideoPayer = function (getData, optionsArray) {
+        $.fn.lince_VideoPlayer = function (getData, optionsArray) {
             var i = 0, options;
             return this.each(function () {
                 try {

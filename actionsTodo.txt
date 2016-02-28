@@ -1,0 +1,17 @@
+
+- al cerrar que finalice el servicio!!
+- configurar el fichero de log
+- al hacer click en un criterio debe parar el video =>onButtonClickCallback
+- algunas caracteristicas tienen que quedarse como fijadas, pq se repiten mucho
+- se tienen que ver todas las categorias en el mismo display
+- posiblemente llegue a haber 400 criterios distintos, agrupados en n categorias:
+    idea: hacer que salga en tabs o panels y se desplieguen.
+    - ese plugin podría ser algo que me sirviera más adelante para gestionar el material de una sesión por ejemplo,
+    o los contenidos de una sesión => hay que profundizar para darle una utilidad generalista
+
+
+- la tabla puede ser un bean y que use el plugin de jandro, que estará disponible en breve, así configuramos
+las accioens automaticamente.
+
+- el panel de video y datos creo que debería ser simultaneo para que al maximizarse no se pierda la visibilidad.
+-
