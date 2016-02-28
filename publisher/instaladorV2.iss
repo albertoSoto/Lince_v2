@@ -5,8 +5,9 @@
 #define MyAppVersion "2.0"
 #define MyAppPublisher "Automatización de datos observacionales para “Avances tecnológicos y metodológicos en la automatización de estudios observacionales en deporte”"
 #define MyAppURL "http://www.observesport.com/"
-#define MyAppExeName "lince-desktop.jar"
-#define MyWorkingDir "F:\src\java\desktop\Lince-desktop-v2"
+#define MyAppExeName "lince-launcher.bat"
+#define MyWorkingDir "F:\src\java\desktop\lince-desktop\Lince_v2"
+;"F:\src\java\desktop\Lince-desktop-v2"
 ;"C:\devtools\repository\github\Lince"
 
 [Setup]
@@ -25,7 +26,7 @@ DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 LicenseFile=Licencia.txt
-OutputBaseFilename=setup
+OutputBaseFilename=setupLinceV2
 Compression=lzma
 SolidCompression=yes  
 ; Tell Windows Explorer to reload the environment
@@ -40,11 +41,12 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 
 [Files]
 Source: "lince-desktop.jar"; DestDir: "{app}"; Flags: ignoreversion
+Source: "lince-launcher.bat"; DestDir: "{app}"; Flags: ignoreversion
 ;Source: "{MyWorkingDir}\target\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion 
-Source: "F:\src\java\desktop\Lince-desktop-v2\src\main\resources\icon\imagenes\*"; DestDir: "{app}\iconos\imagenes"; Excludes: ".svn"; Flags: ignoreversion
-Source: "F:\src\java\desktop\Lince-desktop-v2\src\main\resources\icon\x16\*"; DestDir: "{app}\iconos\x16"; Excludes: ".svn"; Flags: ignoreversion
-Source: "F:\src\java\desktop\Lince-desktop-v2\src\main\resources\icon\x32\*"; DestDir: "{app}\iconos\x32"; Excludes: ".svn"; Flags: ignoreversion
-Source: "F:\src\java\desktop\Lince-desktop-v2\src\main\resources\integration\*"; DestDir: "{app}\template"; Excludes: ".svn"; Flags: ignoreversion
+Source: "{#MyWorkingDir}\src\main\resources\icon\imagenes\*"; DestDir: "{app}\iconos\imagenes"; Excludes: ".svn"; Flags: ignoreversion
+Source: "{#MyWorkingDir}\src\main\resources\icon\x16\*"; DestDir: "{app}\iconos\x16"; Excludes: ".svn"; Flags: ignoreversion
+Source: "{#MyWorkingDir}\src\main\resources\icon\x32\*"; DestDir: "{app}\iconos\x32"; Excludes: ".svn"; Flags: ignoreversion
+Source: "{#MyWorkingDir}\src\main\resources\integration\*"; DestDir: "{app}\template"; Excludes: ".svn"; Flags: ignoreversion
 ;Source: "vlc-2.0.1-win32.exe"; DestDir: "{app}\requisitos\vlc"; Excludes: ".svn"; Flags: ignoreversion   
 Source: "JavaSetup8u73.exe"; DestDir: "{app}\requisitos\jre 1.8"; Excludes: ".svn"; Flags: ignoreversion
 Source: "manuales\Manual de usuario.pdf"; DestDir: "{app}"; Excludes: ".svn"; Flags: ignoreversion
@@ -60,7 +62,7 @@ Filename: "{app}\requisitos\jre 1.8\JavaSetup8u73.exe"; WorkingDir: {app}\requis
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\iconos\imagenes\icono.ico"
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: "{app}\iconos\imagenes\icono.ico"
 Name: "{group}\Manual de usuario"; Filename: "{app}\Manual de usuario.pdf";
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: "{app}\iconos\imagenes\icono.ico"
 

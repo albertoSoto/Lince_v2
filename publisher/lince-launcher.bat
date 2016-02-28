@@ -1,0 +1,1 @@
+java -jar lince-desktop.jar
